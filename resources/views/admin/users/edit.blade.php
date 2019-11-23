@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 @section('content')
 
-<h1>Create User</h1>
+<h1>Edit User</h1>
 
-{!! Form::open(['method' => 'POST', 'action'=> 'AdminUsersController@store', 'files' => true]) !!}
+{!! Form::open(['method' => 'PATCH', 'action'=> ['AdminUsersController@update', $user->id], 'files' => true]) !!}
 
 <div class="form-group">
     {!! Form::label('name', 'Name:') !!}
@@ -35,13 +35,29 @@
 {!! Form::file('photo_id', null, ['class' => 'form-control']) !!}
 
 </div>
+<div class="row">
+    <div class="col-md-3" style="margin: 13px">
+        <img src="{{$user->photo ? asset($user->photo->file) : 'http://placehold.it/400x400'}}" alt="">
+    </div>
+</div>
+<div class="form-group">
+    {!! Form::submit('Update User', ['class' => 'btn btn-primary']) !!}
+</div>
+{!! Form::close() !!}
+
+
+
+
+{!! Form::open(['method' => 'DELETE', 'action'=> ['AdminUsersController@destroy', $user->id], ]) !!}
 
 <div class="form-group">
-    {!! Form::submit('Create User', ['class' => 'btn btn-primary']) !!}
+    {!! Form::submit('Delete User', ['class' => 'btn btn-danger']) !!}
 </div>
 
 
 {!! Form::close() !!}
+
+
 @include('includes.form_error')
 
 @stop

@@ -20,3 +20,17 @@ Auth::routes();
 Route::get('/admin', 'HomeController@index');
 
 Route::resource('admin/users', 'AdminUsersController');
+
+Route::resource('admin/users/{id}/edit', 'AdminUsersController@update');
+
+Route::resource('admin/users/{id}', 'AdminUsersController@destroy');
+
+
+//Route::group(['middleware' => 'admin', function() {
+//
+//    Route::get('/admin', function (){
+//        return view('admin.index');
+//    });
+//}
+
+//]);
