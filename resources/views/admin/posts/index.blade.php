@@ -24,30 +24,33 @@ use App\User;
     <table class="table table-striped">
         <thead>
         <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Photo</th>
-            <th scope="col">Owner</th>
-            <th scope="col">Category</th>
-            <th scope="col">Title</th>
-            <th scope="col">Body</th>
-            <th scope="col">Post Link</th>
-            <th scope="col">Comments</th>
-            <th scope="col">Created At</th>
-            <th scope="col">Updated</th>
+            <th scope="row">ID</th>
+            <th scope="row">User</th>
+            <th scope="row">Category</th>
+            <th scope="row">Photo</th>
+            <th scope="row">Title</th>
+            <th scope="row">Body</th>
+            <th scope="row">Created At</th>
+            <th scope="row">Updated</th>
         </tr>
         </thead>
         <tbody>
-            <td>ID</td>
-            <td>Photo</td>
-            <td>Owner</td>
-            <td>Category</td>
-            <td>Title</td>
-            <td>Body</td>
-            <td>Post Link</td>
-            <td>Comments</td>
-            <td>Created At</td>
-            <td>Updated</td>
+        @if($posts)
+            @foreach($posts as $post)
+                <tr>
+                    <td>{{$post->id}}</td>
+                    <td><a href="{{route('posts.edit', $post->id)}}">{{$post->user->name}}</a></td>
+                    <td>{{$post->category ? $post->category->name : 'Uncategorized'}}</td>
+                    <td>{{$post->category_id}}</td>
+                    <td><img height="50" src="{{$post->photo ? asset($post->photo->file) : 'http://placehold.it/400x400'}}" alt=""></td>
+                    <td>{{$post->title}}</td>
+                    <td>{{$post->body}}</td>
+                    <td>P{{$post->created_at}}</td>
+                    <td>{{$post->updated_at}}</td>
 
+                </tr>
+            @endforeach
+        @endif
 
 
         </tbody>

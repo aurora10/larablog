@@ -12,7 +12,7 @@ $factory->define(App\Post::class, function (Faker $faker) {
         'user_id' => $faker->randomElement($users),
         'category_id' => $faker->numberBetween($min = 1, $max = 3),
         'photo_id' => $faker->numberBetween($min = 1, $max = 3),
-        'title' => $faker->sentence($nbWords = 6, $variableNbWords = true),
+        'name' => $faker->sentence($nbWords = 6, $variableNbWords = true),
         'body' => $faker->paragraph
     ];
 });
