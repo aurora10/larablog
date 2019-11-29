@@ -95,7 +95,9 @@ class AdminPostsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //dd($request);
         $input = $request->all();
+        //dd($input);
         if ($file = $request->file('photo_id')) {
             $name = time() . $file->getClientOriginalName();
             $file->move('images', $name);
@@ -114,6 +116,9 @@ class AdminPostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        unlink()
     }
+
+
 }

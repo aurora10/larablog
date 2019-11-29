@@ -20,11 +20,11 @@ Route::resource('admin/users', 'AdminUsersController');
 Route::resource('admin/posts', 'AdminPostsController');
 
 
-Route::resource('admin/users/{id}/edit', 'AdminUsersController@update');
-Route::resource('admin/posts/{id}/edit', 'AdminPostsController@update');
 
 
-Route::resource('admin/users/{id}', 'AdminUsersController@destroy');
+
+//Route::resource('admin/users/{id}', 'AdminUsersController@destroy');
+//Route::resource('admin/users/{id}', 'AdminUsersController@destroy');
 
 //Route::group(['middleware' => 'admin'], function() {
 //
